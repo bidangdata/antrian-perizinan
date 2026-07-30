@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Antrian Terpadu - DPMP2KUKM Kabupaten Bangka</title>
+    <title>Sistem Antrian Terpadu - DINPMP2KUKM Kabupaten Bangka</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -64,7 +64,7 @@
                     <i class="fa-solid me-0 fa-building-columns text-2xl text-amber-300"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl font-bold tracking-wide leading-tight">DPMP2KUKM KABUPATEN BANGKA</h1>
+                    <h1 class="text-xl font-bold tracking-wide leading-tight">DINPMP2KUKM KABUPATEN BANGKA</h1>
                     <p class="text-xs text-brand-100 font-medium">Sistem Antrian Pelayanan Terpadu & Real-Time</p>
                 </div>
             </div>
@@ -98,19 +98,8 @@
 
                 <div class="p-6 md:p-8">
                     <form id="antrianForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="nik">
-                                NIK (Sesuai KTP) <span class="text-red-500">*</span>
-                            </label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
-                                    <i class="fa-solid fa-id-card"></i>
-                                </span>
-                                <input type="text" id="nik" maxlength="16" pattern="[0-9]{16}" placeholder="Contoh: 1901xxxxxxxxxxxx" required
-                                    class="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none text-sm transition">
-                            </div>
-                        </div>
-
+                        
+                        <!-- Nama Lengkap (Urutan 1) -->
                         <div>
                             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="nama">
                                 Nama Lengkap <span class="text-red-500">*</span>
@@ -120,6 +109,20 @@
                                     <i class="fa-solid fa-user"></i>
                                 </span>
                                 <input type="text" id="nama" placeholder="Masukkan nama pemohon" required
+                                    class="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none text-sm transition">
+                            </div>
+                        </div>
+
+                        <!-- Alamat Lengkap (Urutan 2, Menggantikan NIK) -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1" for="alamat">
+                                Alamat Lengkap <span class="text-red-500">*</span>
+                            </label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </span>
+                                <input type="text" id="alamat" placeholder="Masukkan alamat lengkap" required
                                     class="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none text-sm transition">
                             </div>
                         </div>
@@ -175,7 +178,7 @@
                     <!-- Card Tiket Antrian Hasil -->
                     <div id="ticketResult" class="hidden mt-8 border-2 border-dashed border-emerald-500 rounded-2xl bg-emerald-50/70 p-6 text-center relative" id="printableTicket">
                         <span class="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full mb-2">TIKET ANTRIAN ONLINE</span>
-                        <h3 class="text-sm text-slate-600 font-semibold">DPMP2KUKM KABUPATEN BANGKA</h3>
+                        <h3 class="text-sm text-slate-600 font-semibold">DINPMP2KUKM KABUPATEN BANGKA</h3>
                         
                         <div class="my-4 py-3 bg-white rounded-xl border border-emerald-200 shadow-sm">
                             <p class="text-xs text-slate-500 uppercase font-semibold">Nomor Antrian Anda</p>
@@ -188,9 +191,10 @@
                                 <span class="text-slate-500">Nama Pemohon:</span>
                                 <strong id="resNama" class="font-semibold text-slate-800"></strong>
                             </div>
+                            <!-- Berubah dari NIK menjadi Alamat -->
                             <div class="flex justify-between py-1 border-b border-emerald-100">
-                                <span class="text-slate-500">NIK:</span>
-                                <strong id="resNik" class="font-semibold text-slate-800"></strong>
+                                <span class="text-slate-500">Alamat:</span>
+                                <strong id="resAlamat" class="font-semibold text-slate-800 text-right max-w-[200px]"></strong>
                             </div>
                             <div class="flex justify-between py-1 border-b border-emerald-100">
                                 <span class="text-slate-500">Layanan:</span>
@@ -250,7 +254,7 @@
                             <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                             <h2 class="text-xl font-bold text-brand-500">PANEL UTAMA PETUGAS LOKET</h2>
                         </div>
-                        <p class="text-xs text-slate-500 mt-0.5">DPMP2KUKM Kabupaten Bangka - Pengelolaan Antrian Real-Time</p>
+                        <p class="text-xs text-slate-500 mt-0.5">DINPMP2KUKM Kabupaten Bangka - Pengelolaan Antrian Real-Time</p>
                     </div>
                     <div class="flex items-center gap-2">
                         <button onclick="bukaModalGantiPassword()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition flex items-center gap-1.5">
@@ -336,8 +340,8 @@
                             <thead>
                                 <tr class="bg-brand-500 text-white text-xs uppercase tracking-wider">
                                     <th class="p-3.5 pl-5">No. Antrian</th>
-                                    <th class="p-3.5">NIK</th>
                                     <th class="p-3.5">Nama Pemohon</th>
+                                    <th class="p-3.5">Alamat</th>
                                     <th class="p-3.5">Layanan</th>
                                     <th class="p-3.5">Status</th>
                                     <th class="p-3.5 text-center">Aksi Loket</th>
@@ -362,8 +366,8 @@
             <div class="bg-slate-900 rounded-3xl p-6 md:p-8 text-white shadow-2xl border border-slate-800">
                 <div class="flex flex-col md:flex-row justify-between items-center border-b border-slate-800 pb-6 mb-6 gap-4">
                     <div class="text-center md:text-left">
-                        <h2 class="text-2xl font-extrabold text-amber-400 tracking-wide">LAYAR ANUMAN PANGGILAN ANTRIAN</h2>
-                        <p class="text-xs text-slate-400 mt-1">DPMP2KUKM Kabupaten Bangka</p>
+                        <h2 class="text-2xl font-extrabold text-amber-400 tracking-wide">LAYAR PANGGILAN ANTRIAN</h2>
+                        <p class="text-xs text-slate-400 mt-1">DINPMP2KUKM Kabupaten Bangka</p>
                     </div>
                     <div id="currentTimeClock" class="text-xl font-mono font-bold bg-slate-800/80 px-4 py-2 rounded-xl border border-slate-700 text-emerald-400">
                         00:00:00 WIB
@@ -418,7 +422,7 @@
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-4 mt-auto no-print">
         <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
-            &copy; 2026 DPMP2KUKM Kabupaten Bangka. Hak Cipta Dilindungi.
+            &copy; 2026 DINPMP2KUKM Kabupaten Bangka. Hak Cipta Dilindungi.
         </div>
     </footer>
 
@@ -432,8 +436,8 @@
 
         // Initialize default password if not set
         if (!localStorage.getItem(adminPasswordKey)) {
-            localStorage.getItem(adminPasswordKey, "admin123");
-            localStorage.setItem(adminPasswordKey, "admin123");
+            localStorage.getItem(adminPasswordKey, "adminkpt");
+            localStorage.setItem(adminPasswordKey, "adminkpt");
         }
 
         // Window Onload Initialization
@@ -509,17 +513,21 @@
             btnSubmit.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Sedang Memproses...`;
             btnSubmit.disabled = true;
 
-            const nik = document.getElementById('nik').value;
             const nama = document.getElementById('nama').value;
+            const alamat = document.getElementById('alamat').value;
             const whatsapp = document.getElementById('whatsapp').value;
             const layananSelect = document.getElementById('layanan');
             const layananText = layananSelect.options[layananSelect.selectedIndex].text;
             const tanggal = document.getElementById('tanggal').value;
 
+            // Memperbarui payload: menggunakan kunci "alamat" 
+            // (*Catatan backend: Pastikan backend Apps Script Anda siap menerima properti JSON "alamat", 
+            // atau tambahkan 'nik: alamat' juga sebagai cadangan jika backend masih menggunakan variabel 'nik')
             const payload = {
                 action: "simpan",
-                nik: nik,
                 nama: nama,
+                alamat: alamat,
+                nik: alamat, // Dikirim juga sebagai 'nik' agar script Google Sheet lama tetap berfungsi tanpa error
                 whatsapp: whatsapp,
                 layanan: layananText,
                 tanggal: tanggal
@@ -538,7 +546,7 @@
 
                     document.getElementById('resNomor').innerText = data.nomorAntrian;
                     document.getElementById('resNama').innerText = nama;
-                    document.getElementById('resNik').innerText = nik;
+                    document.getElementById('resAlamat').innerText = alamat; // Print di hasil
                     document.getElementById('resLayanan').innerText = layananText;
                     document.getElementById('resLayananSingkat').innerText = layananText;
                     document.getElementById('resTanggal').innerText = formattedDate;
@@ -562,7 +570,7 @@
         function handleAdminLogin(e) {
             e.preventDefault();
             const inputPwd = document.getElementById('adminPassword').value;
-            const savedPwd = localStorage.getItem(adminPasswordKey) || "admin123";
+            const savedPwd = localStorage.getItem(adminPasswordKey) || "adminkpt";
             const errBox = document.getElementById('authErrorMsg');
 
             if (inputPwd === savedPwd) {
@@ -663,12 +671,16 @@
                         }
 
                         let formattedTanggal = parseTanggalSheet(item.tanggal);
+                        
+                        // Fallback fallback: item.alamat || item.nik
+                        // Ini memastikan apabila ada baris data lama di sheet yg memakai kolom "NIK", data tersebut tetap bisa dirender di kolom Alamat.
+                        let alamatText = item.alamat || item.nik || '-';
 
                         tbody.innerHTML += `
                             <tr class="hover:bg-slate-50 transition">
                                 <td class="p-3.5 pl-5 font-bold text-slate-800 text-sm">${item.nomorAntrian}</td>
-                                <td class="p-3.5 text-slate-600 font-mono">${item.nik}</td>
                                 <td class="p-3.5 font-medium text-slate-700">${item.nama}</td>
+                                <td class="p-3.5 text-slate-600">${alamatText}</td>
                                 <td class="p-3.5 text-slate-600">${item.layanan}</td>
                                 <td class="p-3.5">${badgeHtml}</td>
                                 <td class="p-3.5 text-center space-x-1">
@@ -689,7 +701,6 @@
         }
 
         function panggilAntrian(nomor, tanggal) {
-            // Text Announcement (Modified per request: "cukup sampai loket pelayanan saja", removing 'perizinan')
             const text = `Nomor antrian ${nomor}, silakan menuju ke loket pelayanan`;
             
             if ('speechSynthesis' in window) {
